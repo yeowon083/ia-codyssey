@@ -753,8 +753,8 @@ ls -la
 ```Bash
 /Users/<username>/Desktop/workspace/app
 total 0
-drwxr-xr-x  2 yeowon0839656  yeowon0839656   64  4  4 16:23 .
-drwxr-xr-x  6 yeowon0839656  yeowon0839656  192  4  4 16:23 ..
+drwxr-xr-x  2 <username>  <username>   64  4  4 16:23 .
+drwxr-xr-x  6 <username>  <username>  192  4  4 16:23 ..
 ```
 ### 2) <mark>`index.html` 만들기</mark>
 ###### <mark>파일 이름</mark>
@@ -1031,7 +1031,7 @@ exit
 # 9. Git 설정 + VSCode GitHub 연동
 ### <mark>1) Git 사용자 정보 설정</mark>
 ``` Bash
-git config --global user.name yeowon083
+git config --global user.name <username>
 git config --global user.email yeo******@gmail.com
 ```
 - `user.name` : 커밋 작성자 이름
@@ -1078,17 +1078,17 @@ ia-codyssey
 ```
 주소
 ```
-https://github.com/yeowon083/ia-codyssey.git
+https://github.com/<username>/ia-codyssey.git
 ```
 ### <mark>6) 로컬 저장소와 GitHub 원격 저장소 연결</mark>
 ```Bash
-git remote add origin https://github.com/yeowon083/ia-codyssey.git
+git remote add origin https://github.com/<username>/ia-codyssey.git
 git remote -v
 ```
 결과
 ```Bash
-origin	https://github.com/yeowon083/ia-codyssey.git (fetch)
-origin	https://github.com/yeowon083/ia-codyssey.git (push)
+origin	https://github.com/<username>/ia-codyssey.git (fetch)
+origin	https://github.com/<username>/ia-codyssey.git (push)
 ```
 **GitHub 연동 증거**로 아주 중요
 
