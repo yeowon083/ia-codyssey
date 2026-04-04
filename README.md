@@ -31,7 +31,7 @@ GitHub와 Codyssey를 연동하기 위해 만들어진 Repository입니다.
 - [x] 6. 포트 매핑 접속(2회)
 - [x] 7. 바인드 마운트 반영
 - [x] 8. 볼륨 영속성
-- [] 9. Git 설정 + VSCode GitHub 연동
+- [x] 9. Git 설정 + VSCode GitHub 연동
 
 ## 3) 수행 로그
 
