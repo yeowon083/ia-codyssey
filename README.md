@@ -1123,7 +1123,7 @@ Password for 'https://<username>@github.com':
 ```
 username, password 입력
 
-###### <mark>트러블슈팅</mark>
+###### <mark>트러블슈팅1</mark>
 ```
 remote: Invalid username or token. Password authentication is not supported for Git operations.
 fatal: Authentication failed for 'https://github.com/<username>/ia-codyssey.git/'
@@ -1151,8 +1151,70 @@ git push -u origin main
 ```Bash
 Everything up-to-date
 ```
+###### <mark>트러블슈팅2</mark>
+1. 문제: VS Code 내용과 깃허브에 올라간 내용이 다름
 
-###### 9) GitHub 연동 증거
+2. 원인가설: 
+
+3. 확인: 수정은 했지만 아직 Git 기록으로 저장(commit) 하지 않았기 때문 
+
+4. 해결/대안: 
+```Bash
+git add README.md
+git commit -m "docs: update README"
+```
+결과
+```Bash
+[main 2c60415] docs: update README
+ 1 file changed, 65 insertions(+), 85 deletions(-)
+```
+---
+```Bash
+git push origin main
+```
+결과
+```Bash
+오브젝트 나열하는 중: 5, 완료.
+오브젝트 개수 세는 중: 100% (5/5), 완료.
+Delta compression using up to 6 threads
+오브젝트 압축하는 중: 100% (3/3), 완료.
+오브젝트 쓰는 중: 100% (3/3), 1.14 KiB | 1.14 MiB/s, 완료.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/<username>/ia-codyssey.git
+   f7c016c..2c60415  main -> main
+```
+
+### <mark>9) GitHub 연동 증거</mark>
 GitHub 저장소와 로컬 저장소 연동 후, 프로젝트 파일이 원격 저장소에 정상적으로 업로드된 것을 확인했다.
 
-![GitHub 저장소 연동 증거](docs/images/github-repository.png)
+![GitHub 저장소 연동 증거](screenshots/github-repository.png)
+
+### <mark>10) VS Code에서 저장소 열기</mark>
+###### <mark>프로젝트 폴더가 있는지 확인</mark>
+```Bash
+cd ~/Desktop/workspace
+pwd
+ls -la
+```
+결과
+```Bash
+/Users/<username>/Desktop/workspace
+total 104
+drwxr-xr-x   9 <username>  <username>    288  4  4 21:10 .
+drwx------+  5 <username>  <username>    160  4  4 21:10 ..
+-rw-r--r--@  1 <username>  <username>   8196  4  4 21:10 .DS_Store
+drwxr-xr-x  15 <username>  <username>    480  4  4 21:14 .git
+drwxr-xr-x   3 <username>  <username>     96  4  4 20:06 app
+-rw-r--r--   1 <username>  <username>     66  4  4 16:45 Dockerfile
+-rw-r--r--@  1 <username>  <username>  36015  4  4 20:53 README.md
+drwxr-xr-x   6 <username>  <username>    192  4  4 21:10 screenshots
+drwxr-xr-x   4 <username>  <username>    128  4  4 14:01 terminal-practice
+```
+###### <mark>VS Code에서 Git 연동 확인</mark>
+```Bash
+code ~/Desktop/workspace
+``` 
+Git 관련 화면이 뜨는지 확인
+
+
