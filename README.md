@@ -735,19 +735,14 @@ a89ceb9074df   ubuntu        "bash"                    2 hours ago         Exite
 
 # 5. Dockerfile 빌드/실행 
 ###### <mark>디렉터리 구조</mark>
-```
-dockerfile-test/  
-├─ Dockerfile  
-└─ index.html
-```
 ### <mark>1) 작업 폴더로 이동</mark>
 ###### <mark>작업 폴더 생성</mark>
 ```Bash
-mkdir dockerfile-test
+mkdir app
 ```
 ###### <mark>이동</mark>
 ```Bash
-cd /Users/<username>/Desktop/workspace/dockerfile-test
+cd /Users/<username>/Desktop/workspace/app
 ```
 ###### <mark>현재 위치 확인</mark>
 ```Bash
@@ -756,7 +751,7 @@ ls -la
 ```
 결과
 ```Bash
-/Users/<username>/Desktop/workspace/dockerfile-test
+/Users/<username>/Desktop/workspace/app
 total 0
 drwxr-xr-x  2 yeowon0839656  yeowon0839656   64  4  4 16:23 .
 drwxr-xr-x  6 yeowon0839656  yeowon0839656  192  4  4 16:23 ..
@@ -1053,7 +1048,7 @@ git config --global init.defaultBranch main
 ```Bash
 git config --list
 ```
-결과:
+결과
 ```Bash
 credential.helper=osxkeychain
 user.name=<username>
@@ -1079,99 +1074,84 @@ git init
 ###### <mark>GitHub 사이트에서 새 저장소를 만들기</mark>
 저장소 이름
 ```
-
+ia-codyssey
 ```
-주소:
+주소
 ```
-https://github.com/yeowon083/docker-mission.git
+https://github.com/yeowon083/ia-codyssey.git
 ```
-###### 6) 로컬 저장소와 GitHub 원격 저장소 연결
-명령어:
-```cmd
-git remote add origin https://github.com/yeowon083/docker-mission.git
+### <mark>6) 로컬 저장소와 GitHub 원격 저장소 연결</mark>
+```Bash
+git remote add origin https://github.com/yeowon083/ia-codyssey.git
 git remote -v
 ```
-결과:
-```cmd
-origin  https://github.com/yeowon083/docker-mission.git (fetch)
-origin  https://github.com/yeowon083/docker-mission.git (push)
+결과
+```Bash
+origin	https://github.com/yeowon083/ia-codyssey.git (fetch)
+origin	https://github.com/yeowon083/ia-codyssey.git (push)
 ```
 **GitHub 연동 증거**로 아주 중요
-###### 7) 파일 추가 후 첫 커밋
-명령어:
-```cmd
+
+### <mark>7) 파일 추가 후 첫 커밋</mark>
+```Bash
 git add .
-git commit -m "docs: add docker mission files"
+git commit -m "docs: add workspace files"
 ```
-결과:
-```cmd
-[main (root-commit) aeca05a] docs: add docker mission files
- 8 files changed, 19 insertions(+)
- create mode 100644 dockerfile-test/Dockerfile
- create mode 100644 dockerfile-test/index.html
- create mode 100644 folder2/renamed.txt
- create mode 100644 note.txt
- create mode 100644 terminal-practice/empty.txt
+결과
+```Bash
+ 9 files changed, 1193 insertions(+)
+ create mode 100644 .DS_Store
+ create mode 100644 Dockerfile
+ create mode 100644 README.md
+ create mode 100644 app/index.html
+ create mode 100644 screenshots/.DS_Store
+ create mode 100644 screenshots/custom-nginx-browser-1.png
+ create mode 100644 screenshots/custom-nginx-browser-2.png
+ create mode 100644 terminal-practice/.DS_Store
  create mode 100644 terminal-practice/folder2/renamed.txt
- create mode 100644 terminal-practice/note.txt
- create mode 100644 terminal-practice/permission-file.txt
 ```
-###### 8) 원격 저장소에 푸시
-명령어:
-```cmd
+
+### <mark>8) 원격 저장소에 푸시</mark>
+```Bash
 git branch -M main  
-```
-명령어:
-```cmd
 git push -u origin main
 ```
-결과:
-<mark><b>트러블슈팅</b></mark>
+결과
+```Bash
+Username for 'https://github.com': 
+Password for 'https://<username>@github.com': 
+```
+username, password 입력
 
-문제:
-```cmd
-info: please complete authentication in your browser...
-To https://github.com/yeowon083/docker-mission.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/yeowon083/docker-mission.git'
-hint: Updates were rejected because the remote contains work that you do not
-hint: have locally. This is usually caused by another repository pushing to
-hint: the same ref. If you want to integrate the remote changes, use
-hint: 'git pull' before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+###### <mark>트러블슈팅</mark>
 ```
-원인 가설:
-GitHub 원격 저장소에 이미 커밋(예: README)이 존재하여 로컬 저장소와 히스토리가 달라 push가 거절된 것으로 판단했다.
-확인:
-```cmd
-git pull origin main --allow-unrelated-histories --no-rebase
+remote: Invalid username or token. Password authentication is not supported for Git operations.
+fatal: Authentication failed for 'https://github.com/<username>/ia-codyssey.git/'
 ```
-Vim의 일반 모드
-- `Esc` 누르기
-- `:wq` 입력
-- `Enter`
-해결:
-원격 변경사항을 먼저 pull하여 병합한 뒤 다시 push했다.
-```cmd
+1. 문제: 타당하지 않은 사용자이름 또는 토큰
+
+2. 원인가설: 비밀번호를 입력하는 것이 아닌 토큰을 입력해야 할 것
+
+3. 확인: GitHub 비밀번호로 push/pull 하려고 해서 실패
+
+4. 해결/대안: Personal Access Token(PAT) 사용
+    1) GitHub 사이트에서
+    2) 프로필 사진
+    3) Settings
+    4) Developer settings
+    5) Personal access tokens
+    6) Tokens (classic) 또는 Fine-grained token
+    7) 새 토큰 생성
+
+###### <mark>다시 push하기</mark>
+```Bash  
 git push -u origin main
 ```
-결과:
-```cmd
-Enumerating objects: 13, done.
-Counting objects: 100% (13/13), done.
-Delta compression using up to 8 threads
-Compressing objects: 100% (8/8), done.
-Writing objects: 100% (12/12), 1.23 KiB | 629.00 KiB/s, done.
-Total 12 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
-remote: Resolving deltas: 100% (1/1), done.
-To https://github.com/yeowon083/docker-mission.git
-   dc01f3e..4402587  main -> main
-branch 'main' set up to track 'origin/main'.
+결과
+```Bash
+Everything up-to-date
 ```
 
-원격 저장소의 기존 커밋과 로컬 저장소의 히스토리가 달라 `git push`가 거절되었다.  
-이를 해결하기 위해 `git pull origin main --allow-unrelated-histories --no-rebase`를 실행해 히스토리를 병합했다.  
-병합 과정에서 Vim 편집기가 열렸고, 기본 merge 메시지를 저장(`:wq`)하여 병합 커밋을 완료한 뒤 다시 `git push -u origin main`을 수행했다.
 ###### 9) GitHub 연동 증거
 GitHub 저장소와 로컬 저장소 연동 후, 프로젝트 파일이 원격 저장소에 정상적으로 업로드된 것을 확인했다.
 
