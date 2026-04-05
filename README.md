@@ -734,7 +734,6 @@ a89ceb9074df   ubuntu        "bash"                    2 hours ago         Exite
 - 따라서 운영 중인 컨테이너 내부에 안전하게 들어가 작업할 때는 일반적으로 `attach`보다 `exec`가 더 유용하다.
 
 # 5. Dockerfile 빌드/실행 
-###### <mark>디렉터리 구조</mark>
 ### <mark>1) 작업 폴더로 이동</mark>
 ###### <mark>작업 폴더 생성</mark>
 ```Bash
